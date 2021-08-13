@@ -27,6 +27,7 @@ import time
 #variable global donde se indica en que carpeta se almacenan los archivos
 carpeta="bodega"
 
+#Función que cuenta los archivos con formato Excel que existen.
 #----------------------------------------------------------------------------------------------
 #Funcion para saber cuantos archivos de asistencia hay
 def ls(ruta = '.'):
@@ -42,7 +43,7 @@ def ls(ruta = '.'):
 def guardaExcel(lista):
     #anexo un titulo a la columna
     df = pd.DataFrame({'Nombres completos': lista})
-    df.to_excel('Mi_archivo_excel.xlsx', sheet_name = 'Mi_hojaHHHH',startcol = 2,index=False)
+    df.to_excel('Mi_archivo_excel.xlsx', sheet_name = 'Mi_hojaHHHH',startcol = 0,index=False)
 
 #----------------------------------------------------------------------------------------------
 #Abre el archivo seleccionado y extrae los nombres, aprellido1 y apellido2 y los une en una sola cadena
@@ -52,10 +53,10 @@ def exportaNombres(archivo):
     archivo=carpeta+"\\"+archivo
     nombres=[]
     #Abro el archivo con los datos completos
-    df = pd.read_excel(archivo)
-    temporal=df.loc[:,('Nombre')]+str(" ")+(df.loc[:,('Apellido1')])+str(" ")+(df.loc[:,('Apellido2')])
+    df = pd.read_excel(archivo, sheet_name="datos_IPS")
+    temporal=(df.loc[:,('Nombre')]) + str(" ") + (df.loc[:,('Apellido1')]) + str(" ") + (df.loc[:,('Apellido2')]) #TODO:// Error de toma de datos. Devuelve los datos incompletos.
     temporal=temporal.sort_values()
-    #print(temporal)
+    print(temporal)
     guardaExcel(temporal)
     print("="*60)
     fin = time.time()
@@ -98,10 +99,10 @@ def menuC():
         print("|"+" "*a+mensaje+" "*a+" |")
         print("└"+"─"*80+"┘")
         print("")
-        listadeArchivos=ls(carpeta)
+        listadeArchivos=ls(carpeta) #Verifica el número de archivos con extensión .xls
         b=1
         for a in listadeArchivos:
-            print("\t"+"("+str(b)+"):"+a)
+            print("\t"+"("+str(b)+"):"+a) #Devuelve la posición del archivo y el nombre del mismo.
             b+=1
         print("")
         print("\t\tOPCIONES:")
@@ -112,7 +113,7 @@ def menuC():
         if opcion==0:
             menuP()
         elif opcion <b:
-            menuA(listadeArchivos[opcion-1])
+            menuA(listadeArchivos[opcion-1]) #Llama a la función que recibe una ruta de archivo el cual recuperamos el valor en la parte de arriba.
 
 #----------------------------------------------------------------------------------------------
 #Opciones a realizar con el archivo seleccionado
@@ -133,10 +134,11 @@ def menuA(archivo):
         if opcion==0:
             menuC()
         elif opcion==1:
-            exportaNombres(archivo)
+            exportaNombres(archivo) #Llama a la función que se encarga de realizar el proceso de exportación.
         elif opcion==2:
             print("TODO-Coming soon")
 
+#Función que valida si la opción pasada por consola existe en las posibles respuestas, de no ser así, genera un bucle infinito.
 #----------------------------------------------------------------------------------------------
 def validaOpciones(mensaje,limite):
     valida=False
@@ -150,10 +152,12 @@ def validaOpciones(mensaje,limite):
             valida= False
     return a
 
+# Función de arranque del módulo.
 #----------------------------------------------------------------------------------------------
 def inicio():
     menuP()
 
+#Validación del arranque
 #----------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     inicio()
