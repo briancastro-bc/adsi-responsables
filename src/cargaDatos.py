@@ -18,6 +18,7 @@ https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%20466%20DEL%208%20D
 from os import listdir
 import os
 from os.path import isfile, join
+from numpy import NaN
 #Para usar y manipular datos rapidamente: pandas
 import pandas as pd
 #para manipular tiempo
@@ -43,25 +44,25 @@ def ls(ruta = '.'):
 def guardaExcel(lista):
     #anexo un titulo a la columna
     df = pd.DataFrame({'Nombres completos': lista})
-    df.to_excel('Mi_archivo_excel.xlsx', sheet_name = 'Mi_hojaHHHH',startcol = 0,index=False)
+    df.to_excel('Mi_archivo_excel.xlsx', sheet_name = 'Mi_hojaHHHH',startcol = 0,index=False) #Convierte los datos a un archivo excel y le asigna un nombre de hoja.
 
 #----------------------------------------------------------------------------------------------
 #Abre el archivo seleccionado y extrae los nombres, aprellido1 y apellido2 y los une en una sola cadena
 #Ademas los ordena
 def exportaNombres(archivo):
-    inicio = time.time()
-    archivo=carpeta+"\\"+archivo
+    inicio = time.time() #Inicializa el temporizador.
+    archivo=carpeta+"\\"+archivo #Asigna el path donde está guardado el archivo con los datos.
     nombres=[]
     #Abro el archivo con los datos completos
-    df = pd.read_excel(archivo, sheet_name="datos_IPS")
-    temporal=(df.loc[:,('Nombre')]) + str(" ") + (df.loc[:,('Apellido1')]) + str(" ") + (df.loc[:,('Apellido2')]) #TODO:// Error de toma de datos. Devuelve los datos incompletos.
-    temporal=temporal.sort_values()
+    df = pd.read_excel(archivo, sheet_name="datos_IPS", na_values="No tiene")
+    temporal=(df.loc[:,('Nombre')]) + str(" ") + (df.loc[:,('Apellido1')]) + str(" ") + (df.loc[:, ('Apellido2')].replace(NaN, " N/A")) #En caso de no tener APELLIDO2, se remplaza por un mensaje.
+    temporal=temporal.sort_values() #Acomoda los datos recibidos del archivo excel-
     print(temporal)
-    guardaExcel(temporal)
+    guardaExcel(temporal) #Llama a la función que transforma los datos en un archivo excel.
     print("="*60)
-    fin = time.time()
-    tardo=(fin-inicio)
-    print("Termine, termine, acabe con el palo de café!... \ny me demoré:",tardo,"segundos exportando ese jurgo de datos (",len(temporal),"para ser exactos)")
+    fin = time.time() #Una vez ejecutada la función guardaExcel(param) finaliza el tiempo.
+    tardo=(fin-inicio) #Se calcula el tiempo que se demoró en transformar el archivo.
+    print("Termine, termine, acabe con el palo de café!... \ny me demoré:",tardo,"segundos exportando ese jurgo de datos (",len(temporal),"para ser exactos)") #Muetras el mensaje por pantalla.
     time.sleep(10)
     menuP()
 
@@ -146,7 +147,7 @@ def validaOpciones(mensaje,limite):
         cadenaTeclado=input(mensaje+": ")
         try: 
             a=int(cadenaTeclado)
-            if(a>=0 and a <= int(limite)):
+            if(a>=0 and a <= int(limite)): #Verifica que la opción esté entre 0 y N, en caso de ser así, la variable se convierte a True.
                 valida= True
         except ValueError:
             valida= False
