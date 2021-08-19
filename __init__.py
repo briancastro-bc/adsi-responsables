@@ -1,8 +1,9 @@
 from src.LoadData import LoadData
 
-#Función de inicio del programa.
+#Función de arranque del programa.
 def main():
-    LoadData.input()
+    loadData = LoadData()
+    loadData.input()
 
 if __name__ == "__main__":
     main()

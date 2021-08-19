@@ -13,29 +13,52 @@ import time
 
 class LoadData:
     
-    __folder: str
+    __folder: str = "C://Users//Swyme//Desktop//adsi-responsables//src//bodega"
     options: dict = {
-        "first": ["\t1. Buscar archivo", "\t0. Salir"]
+        "first": ["\t1. Buscar archivo", "\t0. Salir"],
+        "second": ["\t1. Para abrir el archivo", "\t0. Cancelar"]
     }
     
-    def __init__(self, folder="bodega") -> None:
-        self.__folder = folder
+    def __init__(self) -> None:
+        pass
     
     #Método de entrada al módulo.
-    @staticmethod
-    def input() -> None:
-        print("\nWelcome to the program!\n")
+    @classmethod
+    def input(self) -> None:
+        print("\n¡Bienvenido al programa!\n")
         while True:
             option: int = None
-            for i in options:
+            for i in self.options["first"]:
                 print(i)
+            option = self.validate_option("Selecciona una opción", 2)
             if(option == 0):
                 os.system("cls" or "clear")
                 break
+            elif(option == 1):
+                self.files_list()
+                break
+    
+    #Método que muestra la lista de archivos a elegir.
+    @classmethod
+    def files_list(self):
+        print(f"\n\tLista de archivos en la carpeta {self.__folder}\n")
+        files_found = self.count_files(self.__folder)
+        file_length: int = 1
+        for i in files_found:
+            print(f"\t({str(file_length)}): {i}")
+            file_length += 1
+        self.options["second"][0] = f"\t1 al {str(file_length-1)} . para abrir el archivo." #Modifica el elemento del diccionario.
+        for j in self.options["second"]:
+            print(j)
+        option = self.validate_option("Selecciona una opción", file_length)
+        if(option == 0):
+            self.input()
+        elif(option < file_length):
+            pass #TODO://Continuar con el método de opciones del archivo seleccionado.
     
     #Método que se encarga de contar la cantidad de archivos .xls que hay en la carpeta asignada.
-    @staticmethod
-    def count_files(route: str=".") -> list:
+    @classmethod
+    def count_files(self, route: str=".") -> list:
         files: list = []
         count = [file for file in listdir(route) if isfile(join(route, file))]
         for i in count:
@@ -44,8 +67,8 @@ class LoadData:
         return files
     
     #Método que válida las opciones escritas por teclado. En caso de no ser válidas, el bucle se vuelve infinito.
-    @staticmethod
-    def validate_option(message: str, limit: int) -> int:
+    @classmethod
+    def validate_option(self, message: str, limit: int) -> int:
         valid = False
         while valid != True:
             try:
