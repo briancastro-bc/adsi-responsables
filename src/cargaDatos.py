@@ -55,7 +55,7 @@ def exportaNombres(archivo):
     nombres=[]
     #Abro el archivo con los datos completos
     df = pd.read_excel(archivo, sheet_name="datos_IPS", na_values="No tiene")
-    temporal=(df.loc[:,('Nombre')]) + str(" ") + (df.loc[:,('Apellido1')]) + str(" ") + (df.loc[:, ('Apellido2')].replace(NaN, " N/A")) #En caso de no tener APELLIDO2, se remplaza por un mensaje.
+    temporal=(df.loc[:,('Nombre')]) + str(" ") + (df.loc[:,('Apellido1')]) + str(" ") + (df.loc[:, ('Apellido2')].replace(NaN, "")) #En caso de no tener APELLIDO2, se remplaza por un mensaje.
     temporal=temporal.sort_values() #Acomoda los datos recibidos del archivo excel-
     print(temporal)
     guardaExcel(temporal) #Llama a la función que transforma los datos en un archivo excel.
