@@ -8,51 +8,44 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 
 ## Manual de configuración
 
-```
-  ajsdjasjdja
-```
-### Pre-requisitos 📋
+-Se explicara sobre como poder ejecutar su proyecto o repositorio para poder trabajar en el.
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+### Pre-requisitos
 
-```
-Da un ejemplo
-```
-
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+-Para clonar el repositorio en tu local, vas a  necesitar las siguientes dependencias/librerias o software instalado:
 
 ```
-Da un ejemplo
+git
+pandas
+xlrd
+fsspx
 ```
 
-_Y repite_
+### Instalación
+
+-A continuación se darán una serie de pasos los cuales indicarán como se puede instalar el proyecto o repositorio en su local.
+
+Paso 1. Copiar la URL para clonar el repositorio.
 
 ```
-hasta finalizar
+Nos dirigimos hacía nuestro repositorio, en el repositorio aparece un boton "Code", clickeamos en este y ahí nos aparece la URL del repositorio, la copiamos.
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
+Paso 2. Clonar el repositorio.
 
 ```
-Da un ejemplo
+https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
+Paso 3. Instalar los paquetes.
 
 ```
-Da un ejemplo
+pip install pandas, xlrd, fsspx.
+```
+
+Paso 4. Correr el entorno virtual.
+
+```
+-Abrimos nuestra consola de comandos predeterminada, en esta misma consola escribiremos "git clone https://github.com/briancastro-bc/adsi-responsables.git"
+-lo que hicimos en esta linea fue añadirle la URL al comando "git clone"
 ```
