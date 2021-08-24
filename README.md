@@ -18,7 +18,7 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 git
 pandas
 xlrd
-fsspx
+fsspc
 ```
 
 ### Instalación
