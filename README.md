@@ -40,7 +40,7 @@ https://github.com/briancastro-bc/adsi-responsables.git
 Paso 3. Instalar los paquetes.
 
 ```
-pip install pandas, xlrd, fsspx.
+pip install pandas, xlrd, fsspc.
 ```
 
 Paso 4. Correr el entorno virtual.
