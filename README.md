@@ -48,4 +48,6 @@ Paso 4. Correr el entorno virtual.
 ```
 -Abrimos nuestra consola de comandos predeterminada, en esta misma consola escribiremos "git clone https://github.com/briancastro-bc/adsi-responsables.git"
 -lo que hicimos en esta linea fue añadirle la URL al comando "git clone"
+-Ecribir en la consola: virtualenv/Scripts/activate
+-Y por último arrancar el archivo main.py (py main.py)
 ```
