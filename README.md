@@ -26,7 +26,7 @@ Comenzado, este manual está específicado únicamente para la plataforma de Win
 - [openpyxl](https://openpyxl.readthedocs.io/en/stable/#installation)
 - [numpy](https://numpy.org/install/)
 - [xlrd](https://pypi.org/project/xlrd/)
-- [fsspc](https://filesystem-spec.readthedocs.io/en/latest/#installation)
+- [fsspec](https://filesystem-spec.readthedocs.io/en/latest/#installation)
 
 Para poder ejecutar y arrancar el programa en su local, necesitará usar la consola de comandos y/o terminal de preferencia `Bash`, `Powershell` o `cmd`
 
@@ -49,32 +49,38 @@ Con los pasos anteriormente dados, estará listo para usar una consola de comand
 
 A continuación se darán una serie de pasos los cuales indicarán como se puede instalar el proyecto o repositorio en su local (ordenador propio).
 
-Paso 1. Copiar la URL (protocolo HTTP) para clonar el repositorio.
+1. Paso: Copiar la URL (protocolo HTTP) para clonar el repositorio.
 
 ```
 	$ https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
-Paso 2. Abrir una terminal y ejecutar el siguiente comando (en los Pre-requisitos se explica como abrir una terminal en Windows).
+2. Paso: Abrir una terminal y ejecutar el siguiente comando (en los Pre-requisitos se explica como abrir una terminal en Windows).
 
 ```
 	$ git clone https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
-Paso 3. Correr el entorno virtual en la terminal anteriormente creada, se deberá escribir la siguiente línea de comandos:
+3. Paso: Correr el entorno virtual en la terminal anteriormente creada, se deberá escribir la siguiente línea de comandos:
 
 ```
 	$ virtualenv/Scripts/activate
 ```
 
-Paso 4. Actualizar el gestor de paquetes (pip):
+4. Paso: Actualizar el gestor de paquetes (pip):
 
 ```
 	$ pip install --upgrade pip
 ```
 
-Paso 4. Instalar los paquetes necesarios para arrancar el programa:
+5. Paso: Instalar los paquetes necesarios para arrancar el programa:
 
 ```
-	pip install pandas, openpyxl, numpy, xlrd, fsspc.
+	$ pip install pandas, openpyxl, numpy, xlrd, fsspec
+```
+
+6. Paso: ejecutar el archivo de arranque:
+
+```
+	$ py __init__.py
 ```
