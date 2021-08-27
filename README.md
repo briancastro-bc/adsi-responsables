@@ -4,50 +4,77 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 
 ## Índice
 
-- Manual de configuración
+1. Manual de configuración
+	- Pre-requisitos
+		- Consola en windows
+		- Ubicación de carpeta específica
+	- Instalación
+	
 
 ## Manual de configuración
 
--Se explicara sobre como poder ejecutar su proyecto o repositorio para poder trabajar en el.
+Mediante el siguiente manual, se explicara sobre como poder ejecutar el proyecto o repositorio para poder trabajar en su ordenador. De esta forma se garantiza el correcto funcionamiento del programa en una computadora local.
 
 ### Pre-requisitos
 
--Para clonar el repositorio en tu local, vas a  necesitar las siguientes dependencias/librerias o software instalado:
+Comenzado, este manual está específicado únicamente para la plataforma de Windows, en caso de querer seguir este proceso para otro sistema operativo, deberá consultar los comandos usted mismo. Para clonar el repositorio en tu local, vas a  necesitar las siguientes dependencias/librerias o software instalado:
 
-```
-git
-pandas
-xlrd
-fsspc
-```
+- [Git](https://git-scm.com/download/win)
+- [Python](https://www.python.org/downloads/)
+- [pip](https://pypi.org/project/pip/)
+- [pandas](https://pandas.pydata.org/getting_started.html)
+- [openpyxl](https://openpyxl.readthedocs.io/en/stable/#installation)
+- [numpy](https://numpy.org/install/)
+- [xlrd](https://pypi.org/project/xlrd/)
+- [fsspc](https://filesystem-spec.readthedocs.io/en/latest/#installation)
+
+Para poder ejecutar y arrancar el programa en su local, necesitará usar la consola de comandos y/o terminal de preferencia `Bash`, `Powershell` o `cmd`
+
+#### Para abrir una consola en Windows:
+
+Utilizamos las teclas `WIN + R` y escribimos el ejecutable de nuestra terminal/consola, para este ejemplo se utilizará [Powershell](https://docs.microsoft.com/en-us/powershell/). A continuación se indica como:
+
+![Ejecutar terminal](https://i.imgur.com/f7F0XZS.png)
+
+#### Ubicarse en una carpeta de su ordenador:
+
+Para clonar el repositorio en una carpeta específica, deberá usar el comando `cd nombrecarpeta`. Para este ejemplo, nos ubicaremos en el escritorio:
+
+![Ubicación del escritorio](https://i.imgur.com/MipqZz3.png)
+
+Con los pasos anteriormente dados, estará listo para usar una consola de comandos y clonar correctamente el repositorio en su local. En el siguiente topic se le indicará como instalar correctamente el programa.
+
 
 ### Instalación
 
--A continuación se darán una serie de pasos los cuales indicarán como se puede instalar el proyecto o repositorio en su local.
+A continuación se darán una serie de pasos los cuales indicarán como se puede instalar el proyecto o repositorio en su local (ordenador propio).
 
-Paso 1. Copiar la URL para clonar el repositorio.
-
-```
-Nos dirigimos hacía nuestro repositorio, en el repositorio aparece un boton "Code", clickeamos en este y ahí nos aparece la URL del repositorio, la copiamos.
-```
-
-Paso 2. Clonar el repositorio.
+Paso 1. Copiar la URL (protocolo HTTP) para clonar el repositorio.
 
 ```
-https://github.com/briancastro-bc/adsi-responsables.git
+	$ https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
-Paso 3. Instalar los paquetes.
+Paso 2. Abrir una terminal y ejecutar el siguiente comando (en los Pre-requisitos se explica como abrir una terminal en Windows).
 
 ```
-pip install pandas, xlrd, fsspc.
+	$ git clone https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
-Paso 4. Correr el entorno virtual.
+Paso 3. Correr el entorno virtual en la terminal anteriormente creada, se deberá escribir la siguiente línea de comandos:
 
 ```
--Abrimos nuestra consola de comandos predeterminada, en esta misma consola escribiremos "git clone https://github.com/briancastro-bc/adsi-responsables.git"
--lo que hicimos en esta linea fue añadirle la URL al comando "git clone"
--Ecribir en la consola: virtualenv/Scripts/activate
--Y por último arrancar el archivo main.py (py main.py)
+	$ virtualenv/Scripts/activate
+```
+
+Paso 4. Actualizar el gestor de paquetes (pip):
+
+```
+	$ pip install --upgrade pip
+```
+
+Paso 4. Instalar los paquetes necesarios para arrancar el programa:
+
+```
+	pip install pandas, openpyxl, numpy, xlrd, fsspc.
 ```
