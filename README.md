@@ -52,35 +52,35 @@ A continuación se darán una serie de pasos los cuales indicarán como se puede
 1. Paso: Copiar la URL (protocolo HTTP) para clonar el repositorio.
 
 ```
-	$ https://github.com/briancastro-bc/adsi-responsables.git
+	https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
 2. Paso: Abrir una terminal y ejecutar el siguiente comando (en los Pre-requisitos se explica como abrir una terminal en Windows).
 
 ```
-	$ git clone https://github.com/briancastro-bc/adsi-responsables.git
+	git clone https://github.com/briancastro-bc/adsi-responsables.git
 ```
-
-3. Paso: Correr el entorno virtual en la terminal anteriormente creada, se deberá escribir la siguiente línea de comandos:
+3. Paso: Ir a carpeta del repositorio creado:
 
 ```
-	$ virtualenv/Scripts/activate
+	cd nombre-carpeta
+	cd adsi-responsables
 ```
 
 4. Paso: Actualizar el gestor de paquetes (pip):
 
 ```
-	$ pip install --upgrade pip
+	pip install --upgrade pip
 ```
 
 5. Paso: Instalar los paquetes necesarios para arrancar el programa:
 
 ```
-	$ pip install pandas, openpyxl, numpy, xlrd, fsspec
+	pip install pandas openpyxl numpy xlrd fsspec
 ```
 
 6. Paso: ejecutar el archivo de arranque:
 
 ```
-	$ py __init__.py
+	py __init__.py
 ```
