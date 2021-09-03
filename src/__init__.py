@@ -13,5 +13,5 @@ def init() -> None:
             os.system("cls" or "clear")
             break
         elif(option == 1):
-            File.excel_files_in_list()
+            File.excel_files_in_folder()
             break

@@ -23,7 +23,7 @@ class File:
         return files
     
     @classmethod
-    def excel_files_in_list(self) -> None:
+    def excel_files_in_folder(self) -> None:
         print(f"\n\tFiles list in the folder {self.folder}\n")
         files_found = self.count_excel_files(self.folder)
         file_length: int = 1
@@ -46,7 +46,7 @@ class File:
             print(i)
         option = Option.validate_user_option("Select an option", 2)
         if(option == 0):
-            self.excel_files_in_list()
+            self.excel_files_in_folder()
         elif(option == 1):
             self.read_data_from_excel_file(file)
     
@@ -78,5 +78,5 @@ class File:
                 print("Ha ocurrido un error.")
                 response = input("¿Quieres cancelar?: ")
                 if(response == 0):
-                    self.excel_files_in_list()
+                    self.excel_files_in_folder()
                     break
