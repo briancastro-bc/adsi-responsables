@@ -1,7 +1,7 @@
-from src import input
+from src import init
 
 def main() -> None:
-    input()
+    init()
 
 if __name__ == '__main__':
     main()

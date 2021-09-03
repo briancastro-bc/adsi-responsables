@@ -1,17 +1,17 @@
-from src.options import options
+from src.options import Option
 from src.services.file import File
 import os
 
-def input() -> None:
-    print("\n¡Bienvenido al programa!\n")
+def init() -> None:
+    print("\nWelcome to the program!\n")
     while True:
         option: int = None
-        for i in options["first"]:
+        for i in Option.options["first"]:
             print(i)
-        option = File.validate_option("Selecciona una opción", 2)
+        option: int = Option.validate_user_option("Select an option", 2)
         if(option == 0):
             os.system("cls" or "clear")
             break
         elif(option == 1):
-            #self.files_list()
+            File.excel_files_in_list()
             break
