@@ -72,6 +72,7 @@ class File:
     # New method to read data from excel.
     @classmethod
     def take_data_from_excel_file(self, file: str):
+        start = time.time()
         file_path = f"{self.folder}\\{file}" 
         sheet_name = Option.set_excel_sheet()
         dataFrame = pd.read_excel(file_path, sheet_name=sheet_name, na_values="HAVEN'T", keep_default_na=True, 
@@ -82,30 +83,17 @@ class File:
                                         'Nacimiento': datetime.date
                                     }
         )
-        dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
+        #dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
         for value in dataFrame.values:
             self._data_to_export["name"].append(value[0])
             self._data_to_export["lastname"].append(value[1])
             self._data_to_export["surname"].append(value[2])
             self._data_to_export["age"].append(self.calculate_users_age(value[3]))
         self.save_new_excel_file(self._data_to_export)
-        time.sleep(10)
-        src.init()
-    
-    # Método antiguo para leer los datos del archivo excel.
-    @classmethod
-    def read_data_from_excel_file(self, file: str):
-        start = time.time()
-        file_folder = f"{self.folder}\\{file}"
-        dataFrame = pd.read_excel(file_folder, sheet_name="datos_IPS")
-        temp = (dataFrame.loc[:,('Nombre')]) + str(" ") + (dataFrame.loc[:,('Apellido1')]) + str(" ") + (dataFrame.loc[:, ('Apellido2')].replace(NaN, ""))
-        temp = temp.sort_values()
-        print(temp)
-        self.save_new_excel_file(temp)
         print("="*60)
-        end = time.time() #Una vez ejecutada la función guardaExcel(param) finaliza el tiempo.
-        late = (end - start) #Se calcula el tiempo que se demoró en transformar el archivo.
-        print("Termine, termine, acabe con el palo de café!... \ny me demoré:", late ,"segundos exportando ese jurgo de datos (",len(temp),"para ser exactos)") #Muetras el mensaje por pantalla.
+        end = time.time()
+        late = (end - start)
+        print("Termine, termine, acabe con el palo de café!... \ny me demoré:", late ,"segundos exportando ese jurgo de datos (",len(self._data_to_export["name"]),"para ser exactos)")
         time.sleep(10)
         src.init()
     
