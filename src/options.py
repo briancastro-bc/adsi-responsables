@@ -3,7 +3,8 @@ class Option:
     options: dict = {
         "first": ["\t1. Buscar archivo", "\t0. Salir"],
         "second": ["\t1. Para abrir el archivo", "\t0. Cancelar"],
-        "third": ["\t1. Exportar datos", "\t0. Cancelar"]
+        "third": ["\t1. Exportar datos", "\t0. Cancelar"],
+        "affirmative_responses": ["si", "asi es", "por supuesto", "claro", "sii", "ye", "yes", "yea", "yeah", "of course"]
     }
     
     # Función que se encarga de validar las opciones pasadas por consola.
@@ -19,3 +20,20 @@ class Option:
                 valid = False
                 print(f"{e}")
         return option
+    
+    @classmethod
+    def set_excel_sheet(self) -> str:
+        request: bool = False
+        sheet_name = "datos_IPS"
+        while request != True:
+            try:
+                response: str = input("¿Desea leer una hoja específica de su archivo Excel? ").lower()
+                if(response in Option.options["affirmative_responses"]):
+                    sheet_name = input("¿Cuál hoja de su archivo Excel desea leer? ")
+                    request = True
+                else:
+                    print("La hoja que se leerá es: {0}".format(sheet_name))
+                    break
+            except:
+                print("Wrong option, please try again.")
+        return sheet_name

@@ -9,6 +9,11 @@ import time
 class File:
     
     folder: str = "src/database"
+    data_to_export: dict[str, list] = {
+        "name": [],
+        "lastname": [],
+        "surname": []
+    }
     
     def __init__(self, folder="src/database") -> None:
         self.folder = folder
@@ -48,7 +53,38 @@ class File:
         if(option == 0):
             self.excel_files_in_folder()
         elif(option == 1):
-            self.read_data_from_excel_file(file)
+            #self.read_data_from_excel_file(file)
+            self.take_data_excel_file(file)
+    
+    # TODO:// Create a new method for age's calculate
+    @classmethod
+    def calculate_users_age(self, age_list):
+        pass
+    
+    # TODO:// Nuevo método de leer datos desde Excel finalizado.
+    # New method to read data from excel.
+    @classmethod
+    def take_data_excel_file(self, file: str):
+        file_path = f"{self.folder}\\{file}" 
+        sheet_name = Option.set_excel_sheet()
+        dataFrame = pd.read_excel(file_path, sheet_name=sheet_name, na_values="HAVEN'T", keep_default_na=True, 
+                                    dtype={
+                                        'Nombre': str,
+                                        'Apellido1': str,
+                                        'Apellido2': str,
+                                        'Nacimiento': str
+                                    }
+        )
+        dataFrame.sort_values(by='Nombre', ascending=True)
+        for value in dataFrame.values:
+            self.data_to_export["name"].append(value[0])
+            self.data_to_export["lastname"].append(value[1])
+            self.data_to_export["surname"].append(value[2])
+        self.save_new_excel_file(self.data_to_export)
+        time.sleep(10)
+        init()
+        
+        
     
     @classmethod
     def read_data_from_excel_file(self, file: str):
@@ -67,12 +103,12 @@ class File:
         init()
     
     @classmethod
-    def save_new_excel_file(self, data_list: list):
+    def save_new_excel_file(self, data_list: dict[str, list] or list):
         while True:
             try:
                 file_name = input("Nombre del archivo excel a exportar: ")
-                dataFrame = pd.DataFrame({'Datos completos': data_list})
-                dataFrame.to_excel(f'data/{file_name}.xlsx', sheet_name='Hoja1', startcol=0, index=False)
+                dataFrame = pd.DataFrame(data_list)
+                dataFrame.to_excel(f'data/{file_name}.xlsx', sheet_name='ejercicio', startcol=0, index=False)
                 break
             except:
                 print("Ha ocurrido un error.")
