@@ -1,8 +1,8 @@
 from src.options import Option
-from src import *
 from os import listdir
 from os.path import isfile, join
 from numpy import NaN
+import src
 import pandas as pd
 import time
 import datetime
@@ -42,7 +42,7 @@ class File:
             print(j)
         option: int = Option.validate_user_option("Select an option", file_length)
         if(option == 0):
-            init()
+            src.init()
         elif(option < file_length):
             self.select_file_options(files_found[option-1])
     
@@ -83,7 +83,7 @@ class File:
                                         'Nacimiento': datetime.date
                                     }
         )
-        dataFrame.sort_values(by='Nombre', ascending=True)
+        dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir alfabetización de datos. A-Z
         for value in dataFrame.values:
             self._data_to_export["name"].append(value[0])
             self._data_to_export["lastname"].append(value[1])
@@ -91,7 +91,7 @@ class File:
             self._data_to_export["age"].append(self.calculate_users_age(value[3]))
         self.save_new_excel_file(self._data_to_export)
         time.sleep(10)
-        init()  # TODO:// Corregir error
+        src.init()  # TODO:// Corregir error
     
     # Método antiguo para leer los datos del archivo excel.
     @classmethod
@@ -108,7 +108,7 @@ class File:
         late = (end - start) #Se calcula el tiempo que se demoró en transformar el archivo.
         print("Termine, termine, acabe con el palo de café!... \ny me demoré:", late ,"segundos exportando ese jurgo de datos (",len(temp),"para ser exactos)") #Muetras el mensaje por pantalla.
         time.sleep(10)
-        init()
+        src.init()
     
     @classmethod
     def save_new_excel_file(self, data_list: dict[str, list] or list):

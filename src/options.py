@@ -21,7 +21,6 @@ class Option:
                 print(f"{e}")
         return option
     
-    # TODO:// Corregir error relacionado al nombre personalizado de las hojas a leer..
     @classmethod
     def set_excel_sheet(self) -> str:
         request: bool = False
