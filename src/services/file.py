@@ -56,7 +56,7 @@ class File:
             self.excel_files_in_folder()
         elif(option == 1):
             #self.read_data_from_excel_file(file)
-            self.take_data_excel_file(file)
+            self.take_data_from_excel_file(file)
     
     @classmethod
     def calculate_users_age(self, age_list: list) -> list[int]:
@@ -72,7 +72,7 @@ class File:
     # TODO:// Nuevo método de leer datos desde Excel finalizado.
     # New method to read data from excel.
     @classmethod
-    def take_data_excel_file(self, file: str):
+    def take_data_from_excel_file(self, file: str):
         file_path = f"{self.folder}\\{file}" 
         sheet_name = Option.set_excel_sheet()
         dataFrame = pd.read_excel(file_path, sheet_name=sheet_name, na_values="HAVEN'T", keep_default_na=True, 
@@ -91,8 +91,9 @@ class File:
             self._data_to_export["age"].append(self.calculate_users_age(value[3]))
         self.save_new_excel_file(self._data_to_export)
         time.sleep(10)
-        init()  
+        init()  # TODO:// Corregir error
     
+    # Método antiguo para leer los datos del archivo excel.
     @classmethod
     def read_data_from_excel_file(self, file: str):
         start = time.time()
@@ -119,7 +120,7 @@ class File:
                 break
             except:
                 print("Ha ocurrido un error.")
-                response = input("¿Quieres cancelar?: ")
+                response = input("¿Quieres cancelar? 0. Cancelar: ")
                 if(response == 0):
                     self.excel_files_in_folder()
                     break

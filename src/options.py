@@ -21,19 +21,20 @@ class Option:
                 print(f"{e}")
         return option
     
+    # TODO:// Corregir error relacionado al nombre personalizado de las hojas a leer..
     @classmethod
     def set_excel_sheet(self) -> str:
         request: bool = False
         sheet_name = "datos_IPS"
         while request != True:
             try:
-                response: str = input("¿Desea leer una hoja específica de su archivo Excel? ").lower()
+                response: str = input("\n¿Desea leer una hoja específica de su archivo Excel? ").lower()
                 if(response in Option.options["affirmative_responses"]):
-                    sheet_name = input("¿Cuál hoja de su archivo Excel desea leer? ")
+                    sheet_name = input("\n¿Cuál hoja de su archivo Excel desea leer? ")
                     request = True
                 else:
-                    print("La hoja que se leerá es: {0}".format(sheet_name))
+                    print("\nLa hoja que se leerá es: {0}\n".format(sheet_name))
                     break
             except:
-                print("Wrong option, please try again.")
+                print("\nWrong option, please try again.\n")
         return sheet_name
