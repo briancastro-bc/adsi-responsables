@@ -69,7 +69,6 @@ class File:
             print(f"{e}")
         return ages
     
-    # TODO:// Nuevo método de leer datos desde Excel finalizado.
     # New method to read data from excel.
     @classmethod
     def take_data_from_excel_file(self, file: str):
@@ -83,7 +82,7 @@ class File:
                                         'Nacimiento': datetime.date
                                     }
         )
-        dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir alfabetización de datos. A-Z
+        dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
         for value in dataFrame.values:
             self._data_to_export["name"].append(value[0])
             self._data_to_export["lastname"].append(value[1])
@@ -91,7 +90,7 @@ class File:
             self._data_to_export["age"].append(self.calculate_users_age(value[3]))
         self.save_new_excel_file(self._data_to_export)
         time.sleep(10)
-        src.init()  # TODO:// Corregir error
+        src.init()
     
     # Método antiguo para leer los datos del archivo excel.
     @classmethod
@@ -118,8 +117,8 @@ class File:
                 dataFrame = pd.DataFrame(data_list)
                 dataFrame.to_excel(f'data/{file_name}.xlsx', sheet_name='ejercicio', startcol=0, index=False)
                 break
-            except:
-                print("Ha ocurrido un error.")
+            except Exception as e:
+                print(f"{e}")
                 response = input("¿Quieres cancelar? 0. Cancelar: ")
                 if(response == 0):
                     self.excel_files_in_folder()
