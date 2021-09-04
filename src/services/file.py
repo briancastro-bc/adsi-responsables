@@ -5,14 +5,16 @@ from os.path import isfile, join
 from numpy import NaN
 import pandas as pd
 import time
+import datetime
 
 class File:
     
     folder: str = "src/database"
-    data_to_export: dict[str, list] = {
+    _data_to_export: dict[str, list] = {
         "name": [],
         "lastname": [],
-        "surname": []
+        "surname": [],
+        "age": []
     }
     
     def __init__(self, folder="src/database") -> None:
@@ -56,10 +58,16 @@ class File:
             #self.read_data_from_excel_file(file)
             self.take_data_excel_file(file)
     
-    # TODO:// Create a new method for age's calculate
     @classmethod
-    def calculate_users_age(self, age_list):
-        pass
+    def calculate_users_age(self, age_list: list) -> list[int]:
+        ages: int = None
+        try:
+            dates_to_calculate = pd.to_datetime(age_list)
+            result = datetime.datetime.now() - dates_to_calculate
+            ages = int(result.days / 365)
+        except Exception as e:
+            print(f"{e}")
+        return ages
     
     # TODO:// Nuevo método de leer datos desde Excel finalizado.
     # New method to read data from excel.
@@ -72,19 +80,18 @@ class File:
                                         'Nombre': str,
                                         'Apellido1': str,
                                         'Apellido2': str,
-                                        'Nacimiento': str
+                                        'Nacimiento': datetime.date
                                     }
         )
         dataFrame.sort_values(by='Nombre', ascending=True)
         for value in dataFrame.values:
-            self.data_to_export["name"].append(value[0])
-            self.data_to_export["lastname"].append(value[1])
-            self.data_to_export["surname"].append(value[2])
-        self.save_new_excel_file(self.data_to_export)
+            self._data_to_export["name"].append(value[0])
+            self._data_to_export["lastname"].append(value[1])
+            self._data_to_export["surname"].append(value[2])
+            self._data_to_export["age"].append(self.calculate_users_age(value[3]))
+        self.save_new_excel_file(self._data_to_export)
         time.sleep(10)
-        init()
-        
-        
+        init()  
     
     @classmethod
     def read_data_from_excel_file(self, file: str):
