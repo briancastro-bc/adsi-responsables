@@ -60,7 +60,7 @@ A continuación se darán una serie de pasos los cuales indicarán como se puede
 ```
 	git clone https://github.com/briancastro-bc/adsi-responsables.git
 ```
-3. Paso: Ir a carpeta del repositorio creado:
+3. Paso: Ir a carpeta del repositorio clonado:
 
 ```
 	cd adsi-responsables
