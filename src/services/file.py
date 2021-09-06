@@ -14,7 +14,9 @@ class File:
         "name": [],
         "lastname": [],
         "surname": [],
-        "age": []
+        "age": [],
+        "profession": [],
+        "disease": []
     }
     
     def __init__(self, folder="src/database") -> None:
@@ -80,7 +82,9 @@ class File:
                                         'Nombre': str,
                                         'Apellido1': str,
                                         'Apellido2': str,
-                                        'Nacimiento': datetime.date
+                                        'Nacimiento': datetime.date,
+                                        'Profesion': str,
+                                        'Enfermedad': str
                                     }
         )
         #dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
@@ -89,11 +93,13 @@ class File:
             self._data_to_export["lastname"].append(value[1])
             self._data_to_export["surname"].append(value[2])
             self._data_to_export["age"].append(self.calculate_users_age(value[3]))
+            self._data_to_export["profession"].append(value[4])
+            self._data_to_export["disease"].append(value[5])
         self.save_new_excel_file(self._data_to_export)
         print("="*60)
         end = time.time()
         late = (end - start)
-        print("Termine, termine, acabe con el palo de café!... \ny me demoré:", late ,"segundos exportando ese jurgo de datos (",len(self._data_to_export["name"]),"para ser exactos)")
+        print(f"Termine, termine, acabe con el palo de café!... \ny me demoré: {late} segundos exportando ese jurgo de datos (",len(self._data_to_export["name"]),"para ser exactos)")
         time.sleep(10)
         src.init()
     
