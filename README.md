@@ -8,7 +8,7 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 	- [Pre-requisitos](#pre-requisitos)
 		- Consola en windows
 		- Ubicación de carpeta específica
-	- [Instalación](#instalacion)
+	- [Instalación](#instalación)
 	
 
 ## Manual de configuración
