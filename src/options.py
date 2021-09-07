@@ -1,3 +1,5 @@
+import pandas as pd
+
 class Option:
 
     options: dict = {
@@ -37,3 +39,11 @@ class Option:
             except:
                 print("\nWrong option, please try again.\n")
         return sheet_name
+    
+    @classmethod
+    def remove_spaces(self, x):
+        try:
+            x = "".join(x.split())
+        except Exception as e:
+            pass
+        return x

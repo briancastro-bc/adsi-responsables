@@ -68,7 +68,7 @@ class File:
             result = datetime.datetime.now() - dates_to_calculate
             ages = int(result.days / 365)
         except Exception as e:
-            print(f"{e}")
+            pass
         return ages
     
     # New method to read data from excel.
@@ -87,7 +87,8 @@ class File:
                                         'Enfermedad': str
                                     }
         )
-        #dataFrame = dataFrame.sort_values(by=['Nombre', 'Apellido1', 'Apellido2'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
+        dataFrame = dataFrame.applymap(Option.remove_spaces)
+        dataFrame = dataFrame.sort_values(by=['Nombre'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
         for value in dataFrame.values:
             self._data_to_export["name"].append(value[0])
             self._data_to_export["lastname"].append(value[1])
