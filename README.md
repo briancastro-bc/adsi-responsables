@@ -11,7 +11,7 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 	- Instalación
 	
 
-## Manual de configuración
+## [Manual de configuración](#manual)
 
 Mediante el siguiente manual, se explicara sobre como poder ejecutar el proyecto o repositorio para poder trabajar en su ordenador. De esta forma se garantiza el correcto funcionamiento del programa en una computadora local.
 
