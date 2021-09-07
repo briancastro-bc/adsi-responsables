@@ -78,8 +78,8 @@ A continuación se darán una serie de pasos los cuales indicarán como se puede
 	pip install pandas openpyxl numpy xlrd fsspec
 ```
 
-6. Paso: ejecutar el archivo de arranque:
+6. Paso: Ejecutar el archivo/módulo de arranque:
 
 ```
-	py __init__.py
+	py main.py
 ```
