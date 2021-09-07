@@ -51,35 +51,35 @@ A continuación se darán una serie de pasos los cuales indicarán como se puede
 
 1. Paso: Copiar la URL (protocolo HTTP) para clonar el repositorio.
 
-```js
-	https://github.com/briancastro-bc/adsi-responsables.git
+```
+https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
 2. Paso: Abrir una terminal y ejecutar el siguiente comando (en los Pre-requisitos se explica como abrir una terminal en Windows).
 
-```js
-	git clone https://github.com/briancastro-bc/adsi-responsables.git
+```
+git clone https://github.com/briancastro-bc/adsi-responsables.git
 ```
 3. Paso: Ir a carpeta del repositorio clonado:
 
 ```sh
-	cd adsi-responsables
+cd adsi-responsables
 ```
 
 4. Paso: Actualizar el gestor de paquetes (pip):
 
-```py
-	pip install --upgrade pip
+```python
+pip install --upgrade pip
 ```
 
 5. Paso: Instalar los paquetes necesarios para arrancar el programa:
 
-```py
-	pip install pandas openpyxl numpy xlrd fsspec
+```python
+pip install pandas openpyxl numpy xlrd fsspec
 ```
 
 6. Paso: Ejecutar el archivo/módulo de arranque:
 
-```py
-	py main.py
+```python
+py main.py
 ```
