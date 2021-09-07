@@ -11,11 +11,11 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 	- [Instalación](#instalacion)
 	
 
-## [Manual de configuración](#manual)
+## Manual de configuración
 
 Mediante el siguiente manual, se explicara sobre como poder ejecutar el proyecto o repositorio para poder trabajar en su ordenador. De esta forma se garantiza el correcto funcionamiento del programa en una computadora local.
 
-### [Pre-requisitos](#pre-requisitos)
+### Pre-requisitos
 
 Comenzado, este manual está específicado únicamente para la plataforma de Windows, en caso de querer seguir este proceso para otro sistema operativo, deberá consultar los comandos usted mismo. Para clonar el repositorio en tu local, vas a  necesitar las siguientes dependencias/librerias o software instalado:
 
@@ -45,7 +45,7 @@ Para clonar el repositorio en una carpeta específica, deberá usar el comando `
 Con los pasos anteriormente dados, estará listo para usar una consola de comandos y clonar correctamente el repositorio en su local. En el siguiente topic se le indicará como instalar correctamente el programa.
 
 
-### [Instalación](#instalacion)
+### Instalación
 
 A continuación se darán una serie de pasos los cuales indicarán como se puede instalar el proyecto o repositorio en su local (ordenador propio).
 
