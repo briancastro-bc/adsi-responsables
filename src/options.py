@@ -41,9 +41,19 @@ class Option:
         return sheet_name
     
     @classmethod
-    def remove_spaces(self, x):
+    def remove_spaces(self, x: str) -> str:
         try:
-            x = "".join(x.split())
+            x = "".join(x.split()) #TODO://Corregir eliminación de todos los espacios, incluyendo entre nombres.
         except Exception as e:
             pass
         return x
+    
+    @classmethod
+    def upper_nouns(self, string_to_upper: str) -> str:
+        new_noun: str = ""
+        try:
+            new_noun = string_to_upper[0].upper() #Toma la letra inicial y la pasa a mayúscula
+            new_noun += string_to_upper[1:] #Añade el resto de letras
+        except Exception as e:
+            pass
+        return new_noun

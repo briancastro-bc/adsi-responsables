@@ -1,7 +1,6 @@
 from src.options import Option
 from os import listdir
 from os.path import isfile, join
-from numpy import NaN
 import src
 import pandas as pd
 import time
@@ -39,7 +38,7 @@ class File:
         for i in files_found:
             print(f"\t({str(file_length)}): {i}")
             file_length += 1
-        Option.options["second"][0] = f"\t1 al {str(file_length-1)} . para abrir el archivo."
+        Option.options["second"][0] = f"\n\t1 al {str(file_length-1)} . para abrir el archivo."
         for j in Option.options["second"]:
             print(j)
         option: int = Option.validate_user_option("Select an option", file_length)
@@ -50,14 +49,13 @@ class File:
     
     @classmethod
     def select_file_options(self, file: str):
-        print(f"What do you want to do with the {file} file?")
+        print(f"\nWhat do you want to do with the {file} file?")
         for i in Option.options["third"]:
             print(i)
         option = Option.validate_user_option("Select an option", 2)
         if(option == 0):
             self.excel_files_in_folder()
         elif(option == 1):
-            #self.read_data_from_excel_file(file)
             self.take_data_from_excel_file(file)
     
     @classmethod
@@ -88,7 +86,8 @@ class File:
                                     }
         )
         dataFrame = dataFrame.applymap(Option.remove_spaces)
-        dataFrame = dataFrame.sort_values(by=['Nombre'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
+        dataFrame = dataFrame.applymap(Option.upper_nouns)
+        #dataFrame = dataFrame.sort_values(by=['Nombre'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
         for value in dataFrame.values:
             self._data_to_export["name"].append(value[0])
             self._data_to_export["lastname"].append(value[1])
@@ -100,7 +99,7 @@ class File:
         print("="*60)
         end = time.time()
         late = (end - start)
-        print(f"Termine, termine, acabe con el palo de café!... \ny me demoré: {late} segundos exportando ese jurgo de datos (",len(self._data_to_export["name"]),"para ser exactos)")
+        print(f"\nTermine, termine, acabe con el palo de café!... \ny me demoré: {late} segundos exportando ese jurgo de datos (",len(self._data_to_export["name"]),"para ser exactos)\n")
         time.sleep(10)
         src.init()
     
@@ -108,7 +107,7 @@ class File:
     def save_new_excel_file(self, data_list: dict[str, list] or list):
         while True:
             try:
-                file_name = input("Nombre del archivo excel a exportar: ")
+                file_name = input("\nNombre del archivo excel a exportar: ")
                 dataFrame = pd.DataFrame(data_list)
                 dataFrame.to_excel(f'data/{file_name}.xlsx', sheet_name='ejercicio', startcol=0, index=False)
                 break
