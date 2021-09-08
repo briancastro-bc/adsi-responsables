@@ -4,11 +4,11 @@ El proyecto de gestión de cambios se basa en un proyecto de simulación para la
 
 ## Índice
 
-1. Manual de configuración
-	- Pre-requisitos
+1. [Manual de configuración](#manual-de-configuración)
+	- [Pre-requisitos](#pre-requisitos)
 		- Consola en windows
 		- Ubicación de carpeta específica
-	- Instalación
+	- [Instalación](#instalación)
 	
 
 ## Manual de configuración
@@ -52,34 +52,34 @@ A continuación se darán una serie de pasos los cuales indicarán como se puede
 1. Paso: Copiar la URL (protocolo HTTP) para clonar el repositorio.
 
 ```
-	https://github.com/briancastro-bc/adsi-responsables.git
+https://github.com/briancastro-bc/adsi-responsables.git
 ```
 
 2. Paso: Abrir una terminal y ejecutar el siguiente comando (en los Pre-requisitos se explica como abrir una terminal en Windows).
 
 ```
-	git clone https://github.com/briancastro-bc/adsi-responsables.git
+git clone https://github.com/briancastro-bc/adsi-responsables.git
 ```
 3. Paso: Ir a carpeta del repositorio clonado:
 
-```
-	cd adsi-responsables
+```sh
+cd adsi-responsables
 ```
 
 4. Paso: Actualizar el gestor de paquetes (pip):
 
-```
-	pip install --upgrade pip
+```python
+pip install --upgrade pip
 ```
 
 5. Paso: Instalar los paquetes necesarios para arrancar el programa:
 
-```
-	pip install pandas openpyxl numpy xlrd fsspec
+```python
+pip install pandas openpyxl numpy xlrd fsspec
 ```
 
 6. Paso: Ejecutar el archivo/módulo de arranque:
 
-```
-	py main.py
+```python
+py main.py
 ```
