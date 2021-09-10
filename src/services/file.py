@@ -9,7 +9,7 @@ import datetime
 class File:
     
     folder: str = "src/database"
-    _data_to_export: dict[str, list] = {
+    _data_to_export: dict[str, list] = { #TODO:// Solucionar el error de incremento de datos al leer otro archivo.
         "name": [],
         "lastname": [],
         "surname": [],
@@ -59,7 +59,7 @@ class File:
             self.take_data_from_excel_file(file)
     
     @classmethod
-    def calculate_users_age(self, age_list: list) -> list[int]:
+    def calculate_users_age(self, age_list) -> int:
         ages: int = None
         try:
             dates_to_calculate = pd.to_datetime(age_list)
@@ -87,7 +87,7 @@ class File:
         )
         dataFrame = dataFrame.applymap(Option.remove_spaces)
         dataFrame = dataFrame.applymap(Option.upper_nouns)
-        #dataFrame = dataFrame.sort_values(by=['Nombre'], axis=0, ascending=True) # TODO:// Corregir error de alfabetización de datos. A-Z
+        dataFrame = dataFrame.sort_values(by=['Nombre'], axis=0, ascending=True)
         for value in dataFrame.values:
             self._data_to_export["name"].append(value[0])
             self._data_to_export["lastname"].append(value[1])
